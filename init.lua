@@ -1,5 +1,6 @@
 require('basic')
-require('keymaps')
+require('keybindings')
 require('plugins')
 require('lsp')
 require("plugins-config.nvim-tree")
+require("plugins-config.bufferline")

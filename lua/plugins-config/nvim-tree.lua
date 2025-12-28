@@ -4,6 +4,8 @@ if not status then
     return
 end
 
+local keymap = require('keybindings').nvim_tree
+
 nvim_tree.setup({
     sort_by = "case_sensitive",
     -- 是否显示 git 状态
@@ -29,7 +31,3 @@ nvim_tree.setup({
     }
 })
 
-vim.api.nvim_set_keymap('n', '<A-m>', ':NvimTreeToggle<CR>', {
-    noremap = true,
-    silent = true
-})

@@ -75,6 +75,10 @@ require("lazy").setup({{
     event = "VimEnter",
     dependencies = "nvim-tree/nvim-web-devicons"
 }, {
+    'akinsho/bufferline.nvim',
+    version = "*",
+    dependencies = 'nvim-tree/nvim-web-devicons'
+}, {
     "mason-org/mason.nvim",
     opts = {}
 }})
