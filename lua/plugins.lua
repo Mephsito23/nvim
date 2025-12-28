@@ -71,6 +71,10 @@ require("lazy").setup({{
     },
     opts_extend = {"sources.default"}
 }, {
+    "kyazdani42/nvim-tree.lua",
+    event = "VimEnter",
+    dependencies = "nvim-tree/nvim-web-devicons"
+}, {
     "mason-org/mason.nvim",
     opts = {}
 }})
