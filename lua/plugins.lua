@@ -75,8 +75,26 @@ require("lazy").setup({{
     event = "VimEnter",
     dependencies = "nvim-tree/nvim-web-devicons"
 }, {
+    'akinsho/bufferline.nvim',
+    version = "*",
+    dependencies = 'nvim-tree/nvim-web-devicons'
+}, {
     "mason-org/mason.nvim",
     opts = {}
+}, {
+    "mason-org/mason-lspconfig.nvim",
+    opts = {},
+    dependencies = {{
+        "mason-org/mason.nvim",
+        opts = {}
+    }, "neovim/nvim-lspconfig"}
+}, {
+    'neovim/nvim-lspconfig',
+    event = {"BufReadPre", "BufNewFile"}
+}, {
+    'nvim-telescope/telescope.nvim',
+    tag = 'v0.2.0',
+    dependencies = {'nvim-lua/plenary.nvim'}
 }})
 
 vim.cmd.colorscheme("catppuccin")

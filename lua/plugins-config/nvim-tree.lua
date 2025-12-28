@@ -29,7 +29,3 @@ nvim_tree.setup({
     }
 })
 
-vim.api.nvim_set_keymap('n', '<A-m>', ':NvimTreeToggle<CR>', {
-    noremap = true,
-    silent = true
-})
