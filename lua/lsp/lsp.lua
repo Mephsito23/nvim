@@ -49,8 +49,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 				async = true,
 			})
 		end, bufopts)
-        -- 全局禁用会导致格式化不可用，如果要禁用针对指定celient
-        -- client.name == "lua_ls"
+		-- 全局禁用会导致格式化不可用，如果要禁用针对指定celient
+		-- client.name == "lua_ls"
 		--client.server_capabilities.documentFormattingProvider = false
 		--client.server_capabilities.documentRangeFormattingProvider = false
 	end,
