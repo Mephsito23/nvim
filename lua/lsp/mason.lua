@@ -18,5 +18,13 @@ if not mlsp_status then
 end
 
 mason.setup()
-mason_lspconfig.setup({})
+mason_lspconfig.setup({
+    ensure_installed = {
+        "black",
+        "ty",
+        "prettierd",
+        "stylua",
+        "lua-language-server",
+    }
+})
 
