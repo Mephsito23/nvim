@@ -3,7 +3,5 @@ require('keybindings')
 require('plugins')
 require('mason')
 require('lsp.lsp')
-require("plugins-config.nvim-tree")
-require("plugins-config.bufferline")
 require("lsp.ui")
-require("lsp.nonels")
+
