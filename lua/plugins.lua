@@ -91,7 +91,13 @@ require("lazy").setup({{
 }, {
     'neovim/nvim-lspconfig',
     event = {"BufReadPre", "BufNewFile"}
-}, {
+}, 
+{
+  'nvim-treesitter/nvim-treesitter',
+  lazy = false,
+  build = ':TSUpdate'
+},
+{
     'nvim-telescope/telescope.nvim',
     tag = 'v0.2.0',
     dependencies = {'nvim-lua/plenary.nvim'}
