@@ -22,7 +22,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			desc = "vim.lsp.buf.rename",
 		})
 
-		keymap.set("n", "<C-[>", lsp.buf.definition, {
+		keymap.set("n", "gd", lsp.buf.definition, {
 			buffer = bufnr,
 			desc = " vim.lsp.buf.definition()<CR>",
 		})
