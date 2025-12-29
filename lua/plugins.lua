@@ -121,6 +121,12 @@ require("lazy").setup({
 		event = { "BufReadPre", "BufNewFile" },
 	},
 	{
+		"numToStr/Comment.nvim",
+		opts = {
+			-- add any options here
+		},
+	},
+	{
 		"nvim-telescope/telescope.nvim",
 		tag = "v0.2.0",
 		dependencies = { "nvim-lua/plenary.nvim" },
