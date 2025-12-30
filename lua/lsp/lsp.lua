@@ -45,9 +45,16 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		})
 
 		keymap.set("n", "<leader>l", function()
-			vim.lsp.buf.format({
-				async = true,
-			})
+			local ft = vim.bo.filetype
+
+            -- 针对swift 特殊处理
+			if ft == "swift" then
+				vim.notify("[format] swiftformat (conform)", vim.log.levels.INFO)
+				require("conform").format({ async = true })
+			else
+				vim.lsp.buf.format({ async = true })
+			end
+
 		end, bufopts)
 		-- 全局禁用会导致格式化不可用，如果要禁用针对指定celient
 		-- client.name == "lua_ls"

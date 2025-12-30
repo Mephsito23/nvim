@@ -17,6 +17,9 @@ require("lazy").setup({
 	require("plugins.nvim-tree"),
 	require("plugins.none-ls"),
 	require("plugins.mason-lspconfig"),
+	require("plugins.nvim-lspconfig"),
+	require("plugins.xcodebuild"),
+	require("plugins.conform-nvim"),
 	{
 		"catppuccin/nvim",
 		name = "catppuccin",
@@ -30,10 +33,6 @@ require("lazy").setup({
 		"nvim-treesitter/nvim-treesitter",
 		lazy = false,
 		build = ":TSUpdate",
-	},
-	{
-		"neovim/nvim-lspconfig",
-		event = { "BufReadPre", "BufNewFile" },
 	},
 	{
 		"numToStr/Comment.nvim",

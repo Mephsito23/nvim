@@ -16,7 +16,6 @@ local opt = {
 map("v", "<", "<gv", opt)
 map("v", ">", ">gv", opt)
 
-
 -- nvim-tree
 -- alt + m 键打开关闭tree
 map("n", "<leader>m", ":NvimTreeToggle<CR>", opt)
@@ -24,7 +23,7 @@ map("n", "<leader>m", ":NvimTreeToggle<CR>", opt)
 -- BufferLine快捷键设置
 map("n", "<C-h>", ":BufferLineCyclePrev<CR>", opt)
 map("n", "<C-l>", ":BufferLineCycleNext<CR>", opt)
-map("n", "<C-x>", ":bd<CR>", opt)
+map("n", "<C-w>", ":bd<CR>", opt)
 map("n", "<leader>bo", ":BufferLineCloseOthers<CR>", opt)
 
 -- telescope
