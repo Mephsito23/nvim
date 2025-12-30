@@ -20,6 +20,11 @@ require("lazy").setup({
 	require("plugins.nvim-lspconfig"),
 	require("plugins.xcodebuild"),
 	require("plugins.conform-nvim"),
+	require("plugins.nvim-dap"),
+	require("plugins.trouble-vim"),
+	require("plugins.lualine-vim"),
+	require("plugins.fidget-nvim"),
+	require("plugins.nvim-dapui"),
 	{
 		"catppuccin/nvim",
 		name = "catppuccin",

@@ -23,7 +23,6 @@ map("n", "<leader>m", ":NvimTreeToggle<CR>", opt)
 -- BufferLine快捷键设置
 map("n", "<C-h>", ":BufferLineCyclePrev<CR>", opt)
 map("n", "<C-l>", ":BufferLineCycleNext<CR>", opt)
-map("n", "<C-w>", ":bd<CR>", opt)
 map("n", "<leader>bo", ":BufferLineCloseOthers<CR>", opt)
 
 -- telescope
@@ -38,3 +37,7 @@ map("v", "<leader>/", '<ESC><cmd>lua require("Comment.api").toggle.linewise(vim.
 
 map("v", "d", '"_d"', opt)
 map("x", "d", '"_d"', opt)
+
+-- iOS 设置
+vim.keymap.set("n", "<A-d>", "<cmd>silent cc | silent cn<cr>zz", { desc = "Jump to next issue" })
+vim.keymap.set("n", "<A-s>", "<cmd>silent cc | silent cp<cr>zz", { desc = "Jump to previous issue" })
