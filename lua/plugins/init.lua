@@ -26,10 +26,20 @@ require("lazy").setup({
 	require("plugins.fidget-nvim"),
 	require("plugins.nvim-dapui"),
 	require("plugins.gitsigns"),
+	require("plugins.telescope"),
 	{
 		"catppuccin/nvim",
 		name = "catppuccin",
 		priority = 1000,
+	},
+	{
+		"projekt0n/github-nvim-theme",
+		name = "github-theme",
+		lazy = false, -- make sure we load this during startup if it is your main colorscheme
+		priority = 1000, -- make sure to load this before all the other start plugins
+		config = function()
+			require("github-theme").setup({})
+		end,
 	},
 	{
 		"mason-org/mason.nvim",
@@ -46,12 +56,9 @@ require("lazy").setup({
 			-- add any options here
 		},
 	},
-	{
-		"nvim-telescope/telescope.nvim",
-		tag = "v0.2.0",
-		dependencies = { "nvim-lua/plenary.nvim" },
-	},
 })
 
 -- 设置主题
-vim.cmd.colorscheme("catppuccin")
+vim.cmd.colorscheme("catppuccin-frappe")
+-- vim.cmd.colorscheme("nordic")
+-- vim.cmd.colorscheme("github_light")

@@ -29,6 +29,32 @@ local function setupListeners()
 	end
 end
 
+-- 设置iOS po 命令
+local function setupPoCommand()
+	local dap = require("dap")
+
+	-- 给 LLDB 调试会话注册一个“po”缩写
+	dap.defaults.fallback.exception_breakpoints = {}
+	dap.configurations.cpp = dap.configurations.cpp or {}
+	table.insert(dap.configurations.cpp, {
+		type = "lldb",
+		request = "attach",
+		name = "iOS Attach",
+		pid = require("dap.utils").pick_process, -- 或写死 pid
+		initCommands = function()
+			return {
+				"command alias po expression -O --", -- 关键：把 po 映射到 expr -O
+				"command alias p expression --", -- 关键：把 po 映射到 expr -O
+			}
+		end,
+	})
+
+	vim.keymap.set("n", "<leader>po", function()
+		local word = vim.fn.expand("<cword>")
+		require("dap").repl.execute("po " .. word)
+	end, { desc = "PO current word" })
+end
+
 return {
 	"mfussenegger/nvim-dap",
 	dependencies = {
@@ -46,6 +72,7 @@ return {
 		define("DapLogPoint", { text = "", texthl = "DiagnosticInfo", linehl = "", numhl = "" })
 
 		setupListeners()
+		setupPoCommand()
 
 		--when breakpoint is hit, it sets the focus to the buffer with the breakpoint
 		require("dap").defaults.fallback.switchbuf = "usetab,uselast"
