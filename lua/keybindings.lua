@@ -43,3 +43,5 @@ map("n", "<leader>n", ":lua require('dapui').toggle()<CR>", opt)
 -- iOS 设置
 vim.keymap.set("n", "<A-d>", "<cmd>silent cc | silent cn<cr>zz", { desc = "Jump to next issue" })
 vim.keymap.set("n", "<A-s>", "<cmd>silent cc | silent cp<cr>zz", { desc = "Jump to previous issue" })
+
+vim.keymap.set("n", "<C-s>", ":w<CR>", { desc = "保存文件" })

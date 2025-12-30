@@ -25,6 +25,7 @@ require("lazy").setup({
 	require("plugins.lualine-vim"),
 	require("plugins.fidget-nvim"),
 	require("plugins.nvim-dapui"),
+	require("plugins.gitsigns"),
 	{
 		"catppuccin/nvim",
 		name = "catppuccin",

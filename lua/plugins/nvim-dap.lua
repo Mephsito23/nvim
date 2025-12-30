@@ -18,9 +18,9 @@ local function setupListeners()
 	dap.listeners.after["event_terminated"]["me"] = function()
 		if areSet then
 			areSet = false
-			vim.keymap.del("n", "<leader>dc")
-			vim.keymap.del("n", "<leader>dC")
-			vim.keymap.del("n", "<leader>ds")
+			vim.keymap.del("n", "<F5>")
+			vim.keymap.del("n", "<F6>")
+			vim.keymap.del("n", "<F7>")
 			vim.keymap.del("n", "<leader>di")
 			vim.keymap.del("n", "<leader>do")
 			vim.keymap.del({ "n", "v" }, "<Leader>dh")
