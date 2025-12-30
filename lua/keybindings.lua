@@ -21,10 +21,11 @@ map("v", ">", ">gv", opt)
 -- alt + m 键打开关闭tree
 map("n", "<leader>m", ":NvimTreeToggle<CR>", opt)
 
+-- BufferLine快捷键设置
 map("n", "<C-h>", ":BufferLineCyclePrev<CR>", opt)
 map("n", "<C-l>", ":BufferLineCycleNext<CR>", opt)
 map("n", "<C-x>", ":bd<CR>", opt)
--- map("n", "<C-x>", ":BufferLinePickClose<CR>", opt)
+map("n", "<leader>bo", ":BufferLineCloseOthers<CR>", opt)
 
 -- telescope
 -- 查找文件

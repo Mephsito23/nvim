@@ -48,4 +48,5 @@ require("lazy").setup({
 	},
 })
 
+-- 设置主题
 vim.cmd.colorscheme("catppuccin")
