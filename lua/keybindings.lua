@@ -12,9 +12,14 @@ local opt = {
 -- 在普通模式下，把 Ctrl-[ 映射为返回上一个位置
 -- vim.keymap.set("n", "<C-[>", "<C-T>", opt)
 
+-- visual模式下缩进代码
+map("v", "<", "<gv", opt)
+map("v", ">", ">gv", opt)
+
+
 -- nvim-tree
 -- alt + m 键打开关闭tree
-map("n", "<A-m>", ":NvimTreeToggle<CR>", opt)
+map("n", "<leader>m", ":NvimTreeToggle<CR>", opt)
 
 map("n", "<C-h>", ":BufferLineCyclePrev<CR>", opt)
 map("n", "<C-l>", ":BufferLineCycleNext<CR>", opt)
