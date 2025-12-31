@@ -78,7 +78,7 @@ return {
 		require("dap").defaults.fallback.switchbuf = "usetab,uselast"
 
         --stylua: ignore start
-        vim.keymap.set("n", "<leader>dd", xcodebuild.build_and_debug, { desc = "Build & Debug" })
+        vim.keymap.set("n", "<leader>xd", xcodebuild.build_and_debug, { desc = "Build & Debug" })
         vim.keymap.set("n", "<leader>dr", xcodebuild.debug_without_build, { desc = "Debug Without Building" })
         vim.keymap.set("n", "<leader>dt", xcodebuild.debug_tests, { desc = "Debug Tests" })
         vim.keymap.set("n", "<leader>dT", xcodebuild.debug_class_tests, { desc = "Debug Class Tests" })
