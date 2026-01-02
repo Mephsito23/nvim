@@ -1,12 +1,3 @@
--- init.lua
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "swift",
-	callback = function()
-		vim.opt_local.foldmethod = "indent"
-		vim.opt_local.foldlevel = 99
-	end,
-})
-
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
