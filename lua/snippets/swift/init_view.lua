@@ -102,13 +102,12 @@ return {
 	}),
 	s("init_view_viewModel", {
 		-- 属性
-		t("private let viewModel: "),
+		t("private var cancellables = Set<AnyCancellable>()"),
+		t({ "", "private let viewModel: " }),
 		i(1, "ViewModel"),
-		t({ "", "private let disposeBag = DisposeBag()" }),
-		t({ "", "" }),
 
 		-- init(viewModel:)
-		t("init(viewModel: "),
+		t({ "", "", "init(viewModel: " }),
 		rep(1),
 		t(") {"),
 		t({ "", "    self.viewModel = viewModel" }),
@@ -116,72 +115,51 @@ return {
 		t({ "", "    createSubViews()" }),
 		t({ "", "    bindViewModel()" }),
 		t({ "", "}" }),
-		t({ "", "" }),
 
 		-- required init?(coder:)
-		t("@available(*, unavailable)"),
-		t({ "", "required init?(coder: NSCoder) {" }),
+		t({ "", "", "@available(*, unavailable)" }),
+		t({ "", "required init?(coder _: NSCoder) {" }),
 		t({ "", '    fatalError("init(coder:) has not been implemented")' }),
 		t({ "", "}" }),
-		t({ "", "" }),
+
+		-- deinit
+		t({ "", "", "deinit {" }),
+		t({ "", '    logger.info("' }),
+		i(2, "View"),
+		t('被销毁")'),
+		t({ "", "}" }),
 
 		-- bindViewModel
-		t("private func bindViewModel() {"),
-		t({ "", "    " }),
-		i(2, ""),
-		t({ "", "}" }),
-		t({ "", "" }),
+		t({ "", "", "private func bindViewModel() {}" }),
+
+		-- MARK: - 布局
+		t({ "", "", "// MARK: - 布局" }),
 
 		-- createSubViews
-		t("private func createSubViews() {"),
+		t({ "", "", "private func createSubViews() {" }),
+		t({ "", "    addSubview(stackV)" }),
 		t({ "", "    setupLayout()" }),
 		t({ "", "}" }),
-		t({ "", "" }),
 
 		-- setupLayout
-		t("private func setupLayout() {"),
-		t({ "", "    " }),
-		i(3, ""),
+		t({ "", "", "private func setupLayout() {" }),
+		t({ "", "    stackV.snp.makeConstraints { make in" }),
+		t({ "", "        make.edges.equalToSuperview()" }),
+		t({ "", "    }" }),
 		t({ "", "}" }),
-		t({ "", "" }),
 
-		-- MARK
-		t("// MARK: 懒加载"),
-		t({ "", "" }),
-	}),
-	s({ trig = "init_table_cell", dscr = "创建cell" }, {
-		-- init(style:reuseIdentifier:)
-		t("override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {"),
-		t({ "", "    super.init(style: style, reuseIdentifier: reuseIdentifier)" }),
-		t({ "", "    selectionStyle = .none" }),
-		t({ "", "    backgroundColor = .clear" }),
-		t({ "", "    contentView.backgroundColor = .clear" }),
-		t({ "", "    createSubViews()" }),
-		t({ "", "}" }),
-		t({ "", "" }),
+		-- MARK: 懒加载
+		t({ "", "", "// MARK: 懒加载" }),
 
-		-- required init?(coder:)
-		t("@available(*, unavailable)"),
-		t({ "", "required init?(coder: NSCoder) {" }),
-		t({ "", '    fatalError("init(coder:) has not been implemented")' }),
-		t({ "", "}" }),
-		t({ "", "" }),
-
-		-- createSubViews
-		t("private func createSubViews() {"),
-		t({ "", "    setupLayout()" }),
-		t({ "", "}" }),
-		t({ "", "" }),
-
-		-- setupLayout
-		t("private func setupLayout() {"),
-		t({ "", "    " }),
-		i(1, ""),
-		t({ "", "}" }),
-		t({ "", "" }),
-
-		-- MARK
-		t("// MARK: 懒加载"),
-		t({ "", "" }),
+		-- lazy stackV
+		t({ "", "", "private lazy var stackV: UIStackView = {" }),
+		t({ "", "    let stackV = UIStackView()" }),
+		t({ "", "    stackV.axis = .vertical" }),
+		t({ "", "    stackV.isLayoutMarginsRelativeArrangement = true" }),
+		t({ "", "    stackV.directionalLayoutMargins = .zero" }),
+		t({ "", "    stackV.spacing = 16" }),
+		t({ "", "    stackV.insetsLayoutMarginsFromSafeArea = false" }),
+		t({ "", "    return stackV" }),
+		t({ "", "}()" }),
 	}),
 }
