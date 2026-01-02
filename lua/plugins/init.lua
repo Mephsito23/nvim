@@ -30,6 +30,8 @@ require("lazy").setup({
 	require("plugins.log-highlight"),
 	require("plugins.dropbar"),
 	require("plugins.LuaSnip"),
+	require("plugins.treesitter"),
+	require("plugins.which-key"),
 	{
 		"catppuccin/nvim",
 		name = "catppuccin",
@@ -47,11 +49,6 @@ require("lazy").setup({
 	{
 		"mason-org/mason.nvim",
 		opts = {},
-	},
-	{
-		"nvim-treesitter/nvim-treesitter",
-		lazy = false,
-		build = ":TSUpdate",
 	},
 	{
 		"numToStr/Comment.nvim",

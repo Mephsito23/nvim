@@ -5,8 +5,8 @@ local map = vim.api.nvim_set_keymap
 
 -- 复用 opt 参数
 local opt = {
-	noremap = true,
-	silent = true,
+    noremap = true,
+    silent = true,
 }
 
 -- visual模式下缩进代码
