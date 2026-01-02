@@ -1,7 +1,12 @@
 return {
 	"saghen/blink.cmp",
 	-- optional: provides snippets for the snippet source
-	dependencies = { "rafamadriz/friendly-snippets", "echasnovski/mini.icons", "onsails/lspkind-nvim" },
+	dependencies = {
+		"L3MON4D3/LuaSnip",
+		"rafamadriz/friendly-snippets",
+		"echasnovski/mini.icons",
+		"onsails/lspkind-nvim",
+	},
 
 	-- use a release tag to download pre-built binaries
 	version = "1.*",
@@ -36,9 +41,15 @@ return {
 					cmp.show_documentation()
 				end,
 			},
-			["<tab>"] = {},
+			["<Tab>"] = { "snippet_forward", "fallback" },
+			["<S-Tab>"] = { "snippet_backward", "fallback" },
 		},
-
+		snippets = {
+			preset = "luasnip",
+			expand = function(snippet)
+				require("luasnip").lsp_expand(snippet.body)
+			end,
+		},
 		appearance = {
 			-- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
 			-- Adjusts spacing to ensure icons are aligned
@@ -55,7 +66,7 @@ return {
 		-- Default list of enabled providers defined so that you can extend it
 		-- elsewhere in your config, without redefining it, due to `opts_extend`
 		sources = {
-			default = { "lsp", "path", "snippets", "buffer" },
+			default = { "snippets", "lsp", "path", "buffer" },
 		},
 
 		-- iOS 开发补全设置

@@ -29,6 +29,7 @@ require("lazy").setup({
 	require("plugins.telescope"),
 	require("plugins.log-highlight"),
 	require("plugins.dropbar"),
+	require("plugins.LuaSnip"),
 	{
 		"catppuccin/nvim",
 		name = "catppuccin",
