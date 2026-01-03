@@ -46,9 +46,6 @@ return {
 		},
 		snippets = {
 			preset = "luasnip",
-			expand = function(snippet)
-				require("luasnip").lsp_expand(snippet.body)
-			end,
 		},
 		appearance = {
 			-- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
