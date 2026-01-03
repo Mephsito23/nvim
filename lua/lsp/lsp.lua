@@ -1,6 +1,3 @@
-vim.lsp.enable({ "lua_ls" })
-vim.lsp.enable({ "ty" })
-
 -- LspAttach: After an LSP Client performs "initialize" and attaches to a buffer.
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(event)

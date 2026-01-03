@@ -9,6 +9,7 @@ return {
 				"lua",
 				"swift",
 				"python",
+				"rust",
 				"javascript",
 				"typescript",
 				"html",
