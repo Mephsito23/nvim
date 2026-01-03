@@ -33,20 +33,8 @@ require("lazy").setup({
 	require("plugins.treesitter"),
 	require("plugins.which-key"),
 	require("plugins.alpha-nvim"),
-	{
-		"catppuccin/nvim",
-		name = "catppuccin",
-		priority = 1000,
-	},
-	{
-		"projekt0n/github-nvim-theme",
-		name = "github-theme",
-		lazy = false, -- make sure we load this during startup if it is your main colorscheme
-		priority = 1000, -- make sure to load this before all the other start plugins
-		config = function()
-			require("github-theme").setup({})
-		end,
-	},
+	require("plugins.ui"),
+	require("plugins.snacks"),
 	{
 		"mason-org/mason.nvim",
 		opts = {},

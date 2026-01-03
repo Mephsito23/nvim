@@ -82,4 +82,4 @@ vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.wo.foldmethod = "expr"
 vim.wo.foldlevel = 99
 vim.wo.foldenable = true
-vim.wo.foldcolumn = "1"
+-- vim.wo.foldcolumn = "1"

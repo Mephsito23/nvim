@@ -5,8 +5,8 @@ local map = vim.api.nvim_set_keymap
 
 -- 复用 opt 参数
 local opt = {
-    noremap = true,
-    silent = true,
+	noremap = true,
+	silent = true,
 }
 
 -- visual模式下缩进代码
@@ -23,6 +23,10 @@ map("n", "<C-l>", ":BufferLineCycleNext<CR>", opt)
 map("n", "<leader>bo", ":BufferLineCloseOthers<CR>", opt)
 map("n", "<leader>br", ":BufferLineCloseRight<CR>", opt)
 map("n", "<leader>bl", ":BufferLineCloseLeft<CR>", opt)
+
+vim.keymap.set("n", "<leader>bx", function()
+	require("snacks").bufdelete()
+end, { desc = "关闭buf" })
 
 -- telescope
 -- 查找文件
