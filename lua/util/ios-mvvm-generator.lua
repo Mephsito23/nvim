@@ -128,8 +128,7 @@ function M.generate(name)
 	if ok then
 		local node = api.tree.get_node_under_cursor()
 		if node then
-			root = node.type == 'directory' and node.absolute_path
-				or vim.fn.fnamemodify(node.absolute_path, ':h')
+			root = node.type == "directory" and node.absolute_path or vim.fn.fnamemodify(node.absolute_path, ":h")
 			root = root .. "/" .. Name
 		end
 	end
