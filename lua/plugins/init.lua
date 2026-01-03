@@ -32,6 +32,7 @@ require("lazy").setup({
 	require("plugins.LuaSnip"),
 	require("plugins.treesitter"),
 	require("plugins.which-key"),
+	require("plugins.alpha-nvim"),
 	{
 		"catppuccin/nvim",
 		name = "catppuccin",
