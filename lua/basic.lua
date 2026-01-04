@@ -76,3 +76,10 @@ vim.o.shortmess = vim.o.shortmess .. "c"
 -- 补全显示10行
 vim.o.pumheight = 10
 vim.o.clipboard = "unnamedplus"
+
+-- 使用新的 Lua 接口设置折叠
+vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.wo.foldmethod = "expr"
+vim.wo.foldlevel = 99
+vim.wo.foldenable = true
+-- vim.wo.foldcolumn = "1"

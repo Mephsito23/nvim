@@ -1,0 +1,66 @@
+local M = {}
+
+-- 设置iOS po 命令
+local function setupPoCommand()
+	local dap = require("dap")
+
+	-- 给 LLDB 调试会话注册一个“po”缩写
+	dap.defaults.fallback.exception_breakpoints = {}
+	dap.configurations.cpp = dap.configurations.cpp or {}
+	table.insert(dap.configurations.cpp, {
+		type = "lldb",
+		request = "attach",
+		name = "iOS Attach",
+		pid = require("dap.utils").pick_process, -- 或写死 pid
+		initCommands = function()
+			return {
+				"command alias po expression -O --", -- 关键：把 po 映射到 expr -O
+				"command alias p expression --", -- 关键：把 po 映射到 expr -O
+			}
+		end,
+	})
+
+	vim.keymap.set("n", "<leader>po", function()
+		local word = vim.fn.expand("<cword>")
+		require("dap").repl.execute("po " .. word)
+	end, { desc = "PO current word" })
+end
+
+-- 设置xcodebuild
+local function setupXcodeBuild()
+	local xcodebuild = require("xcodebuild.integrations.dap")
+	xcodebuild.setup()
+
+	local define = vim.fn.sign_define
+	define("DapBreakpoint", { text = "", texthl = "DiagnosticError", linehl = "", numhl = "" })
+	define("DapBreakpointRejected", { text = "", texthl = "DiagnosticError", linehl = "", numhl = "" })
+	define("DapStopped", { text = "", texthl = "DiagnosticOk", linehl = "", numhl = "" })
+	define("DapLogPoint", { text = "", texthl = "DiagnosticInfo", linehl = "", numhl = "" })
+	define("DapLogPoint", { text = "", texthl = "DiagnosticInfo", linehl = "", numhl = "" })
+
+	setupPoCommand()
+
+	--when breakpoint is hit, it sets the focus to the buffer with the breakpoint
+	require("dap").defaults.fallback.switchbuf = "usetab,uselast"
+
+    --stylua: ignore start
+    vim.keymap.set("n", "<leader>xd", xcodebuild.build_and_debug, { desc = "Build & Debug" })
+    vim.keymap.set("n", "<leader>dr", xcodebuild.debug_without_build, { desc = "Debug Without Building" })
+    vim.keymap.set("n", "<leader>dt", xcodebuild.debug_tests, { desc = "Debug Tests" })
+    vim.keymap.set("n", "<leader>dT", xcodebuild.debug_class_tests, { desc = "Debug Class Tests" })
+    vim.keymap.set("n", "<leader>b", xcodebuild.toggle_breakpoint, { desc = "Toggle Breakpoint" })
+    vim.keymap.set("n", "<leader>B", xcodebuild.toggle_message_breakpoint, { desc = "Toggle Message Breakpoint" })
+	--stylua: ignore end
+
+	vim.keymap.set("n", "<leader>dx", function()
+		xcodebuild.terminate_session()
+		require("dap").listeners.after["event_terminated"]["me"]()
+	end, { desc = "Terminate debugger" })
+end
+
+function M.generate()
+	setupXcodeBuild()
+end
+
+M.generate()
+return M

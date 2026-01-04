@@ -15,6 +15,7 @@ map("v", ">", ">gv", opt)
 
 -- nvim-tree alt + m 键打开关闭tree
 map("n", "<leader>m", ":NvimTreeToggle<CR>", opt)
+map("n", "<leader>J", ":NvimTreeFindFile<CR>", opt)
 
 -- BufferLine快捷键设置
 map("n", "<C-h>", ":BufferLineCyclePrev<CR>", opt)
@@ -22,6 +23,10 @@ map("n", "<C-l>", ":BufferLineCycleNext<CR>", opt)
 map("n", "<leader>bo", ":BufferLineCloseOthers<CR>", opt)
 map("n", "<leader>br", ":BufferLineCloseRight<CR>", opt)
 map("n", "<leader>bl", ":BufferLineCloseLeft<CR>", opt)
+
+vim.keymap.set("n", "<leader>bx", function()
+	require("snacks").bufdelete()
+end, { desc = "关闭buf" })
 
 -- telescope
 -- 查找文件

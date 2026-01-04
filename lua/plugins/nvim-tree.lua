@@ -11,7 +11,18 @@ return {
 		-- 过滤文件
 		filters = {
 			dotfiles = true, -- 过滤 dotfile
-			custom = { "node_modules" }, -- 其他过滤目录
+			custom = {
+				"node_modules",
+				"*.uid",
+				"*.o",
+				"*.exe",
+				"*.pyc",
+				"__pycache__",
+				"node_modules",
+				".git",
+				".idea",
+				".vscode",
+			}, -- 其他过滤目录
 		},
 		view = {
 			-- 文件浏览器展示位置，左侧：left, 右侧：right

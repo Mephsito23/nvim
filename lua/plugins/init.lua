@@ -27,28 +27,17 @@ require("lazy").setup({
 	require("plugins.nvim-dapui"),
 	require("plugins.gitsigns"),
 	require("plugins.telescope"),
-	{
-		"catppuccin/nvim",
-		name = "catppuccin",
-		priority = 1000,
-	},
-	{
-		"projekt0n/github-nvim-theme",
-		name = "github-theme",
-		lazy = false, -- make sure we load this during startup if it is your main colorscheme
-		priority = 1000, -- make sure to load this before all the other start plugins
-		config = function()
-			require("github-theme").setup({})
-		end,
-	},
+	require("plugins.log-highlight"),
+	require("plugins.dropbar"),
+	require("plugins.LuaSnip"),
+	require("plugins.treesitter"),
+	require("plugins.which-key"),
+	require("plugins.alpha-nvim"),
+	require("plugins.ui"),
+	require("plugins.snacks"),
 	{
 		"mason-org/mason.nvim",
 		opts = {},
-	},
-	{
-		"nvim-treesitter/nvim-treesitter",
-		lazy = false,
-		build = ":TSUpdate",
 	},
 	{
 		"numToStr/Comment.nvim",

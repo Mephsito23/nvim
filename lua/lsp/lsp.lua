@@ -1,6 +1,3 @@
-vim.lsp.enable({ "lua_ls" })
-vim.lsp.enable({ "ty" })
-
 -- LspAttach: After an LSP Client performs "initialize" and attaches to a buffer.
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(event)
@@ -48,7 +45,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		keymap.set("n", "<leader>l", function()
 			local ft = vim.bo.filetype
 
-			-- 针对swift 特殊处理
+			-- 针对swift 特殊处理or ft == "gdscript"
 			if ft == "swift" then
 				vim.notify("[format] swiftformat (conform)", vim.log.levels.INFO)
 				require("conform").format({ async = true })

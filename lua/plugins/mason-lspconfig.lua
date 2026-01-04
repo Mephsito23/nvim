@@ -13,6 +13,7 @@ return {
 				"prettierd",
 				"stylua",
 				"lua-language-server",
+				"rust-analyzer",
 			},
 		},
 	},

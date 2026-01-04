@@ -7,6 +7,7 @@ return {
 		conform.setup({
 			formatters_by_ft = {
 				swift = { "swiftformat", lsp_format = "fallback" },
+				-- gdscript = { "gdformat", lsp_format = "fallback" },
 			},
 			format_on_save = function(bufnr)
 				local ignore_filetypes = { "oil" }
