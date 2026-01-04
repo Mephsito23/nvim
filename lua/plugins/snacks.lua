@@ -13,7 +13,7 @@ return {
 		indent = { enabled = false },
 		notifier = {
 			enabled = true,
-			style = "notification",
+			style = "compact",
 		},
 		terminal = {
 			enabled = true,

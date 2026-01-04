@@ -9,6 +9,12 @@ return {
 				swift = { "swiftformat", lsp_format = "fallback" },
 				-- gdscript = { "gdformat", lsp_format = "fallback" },
 			},
+			formatters = {
+				swift = {
+					args = { "--config", ".swiftformat" },
+					stop_after_first = true, -- 关键：只要第一个成功就停
+				},
+			},
 			format_on_save = function(bufnr)
 				local ignore_filetypes = { "oil" }
 				if vim.tbl_contains(ignore_filetypes, vim.bo[bufnr].filetype) then

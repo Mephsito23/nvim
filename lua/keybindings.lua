@@ -28,12 +28,6 @@ vim.keymap.set("n", "<leader>bx", function()
 	require("snacks").bufdelete()
 end, { desc = "关闭buf" })
 
--- telescope
--- 查找文件
-map("n", "<C-p>", ":Telescope find_files<CR>", opt)
--- 全局搜索
-map("n", "<C-f>", ":Telescope live_grep<CR>", opt)
-
 --注释
 map("n", "<leader>/", '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>', opt)
 map("v", "<leader>/", '<ESC><cmd>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>', opt)
