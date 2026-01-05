@@ -40,4 +40,12 @@ return {
 	s("weakSelf", {
 		t("guard let self else { return }"),
 	}),
+	s("cb_subscribe", {
+		t(""), -- 可选：起始空行，方便粘贴后对齐
+		i(1, "Observable"),
+		t({ "", "    .sink { [weak self] _ in" }),
+		t({ "", "        guard let self else { return }" }),
+		t({ "", "    }" }),
+		t({ "", "    .store(in: &cancellables)" }),
+	}),
 }
