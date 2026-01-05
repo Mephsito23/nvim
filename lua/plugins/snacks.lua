@@ -30,8 +30,38 @@ return {
 				zindex = 50,
 			},
 		},
+		zen = { -- 这里放禅模式专属配置
+			toggles = {
+				dim = true, -- 淡化非当前代码块
+				git_signs = false, -- 隐藏 Git 标记
+				diagnostics = false, -- 隐藏诊断图标
+			},
+			show = {
+				statusline = false, -- 隐藏状态栏
+				tabline = false, -- 隐藏标签栏
+			},
+			win = {
+				style = "zen", -- 使用内置 zen 样式
+				width = 120, -- 窗口宽度，0=自动
+				height = 0, -- 窗口高度，0=自动
+			},
+		},
 	},
 	keys = {
+		{
+			"<leader>z",
+			function()
+				Snacks.zen()
+			end,
+			desc = "Zen 切换",
+		},
+		{
+			"<leader>Z",
+			function()
+				Snacks.zen.zoom()
+			end,
+			desc = "Zoom 切换",
+		},
 		-- git
 		{
 			"<C-g>",

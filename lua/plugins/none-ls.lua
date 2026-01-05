@@ -15,11 +15,11 @@ return {
 				formatting.stylua,
 				formatting.black,
 				formatting.prettierd,
-				formatting.swiftlint,
+				-- formatting.swiftlint,
 				formatting.gdformat,
 				-- 其他 formatter 方式
 				-- brew install swiftlint
-				require("null-ls").builtins.diagnostics.swiftlint,
+				-- require("null-ls").builtins.diagnostics.swiftlint,
 			},
 		}
 	end,
