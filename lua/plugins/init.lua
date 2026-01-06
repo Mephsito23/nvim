@@ -45,6 +45,13 @@ require("lazy").setup({
 			-- add any options here
 		},
 	},
+	{
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+		config = true,
+		-- use opts = {} for passing setup options
+		-- this is equivalent to setup({}) function
+	},
 })
 
 -- 设置主题
