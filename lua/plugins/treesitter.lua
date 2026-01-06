@@ -44,7 +44,28 @@ return {
 			tscontext.setup(opts)
 			vim.keymap.set("n", "[c", function()
 				tscontext.go_to_context()
-			end, { silent = true })
+			end, { silent = true, desc = "跳转函数签名处" })
+		end,
+	},
+	{
+		"nvim-treesitter/nvim-treesitter-textobjects",
+		branch = "main",
+		init = function()
+			vim.g.no_plugin_maps = true
+		end,
+		config = function()
+			vim.keymap.set({ "x", "o" }, "af", function()
+				require("nvim-treesitter-textobjects.select").select_textobject("@function.outer", "textobjects")
+			end)
+			vim.keymap.set({ "x", "o" }, "if", function()
+				require("nvim-treesitter-textobjects.select").select_textobject("@function.inner", "textobjects")
+			end)
+			vim.keymap.set({ "x", "o" }, "ac", function()
+				require("nvim-treesitter-textobjects.select").select_textobject("@class.outer", "textobjects")
+			end)
+			vim.keymap.set({ "x", "o" }, "ic", function()
+				require("nvim-treesitter-textobjects.select").select_textobject("@class.inner", "textobjects")
+			end)
 		end,
 	},
 }
