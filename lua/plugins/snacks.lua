@@ -6,6 +6,7 @@ return {
 	opts = {
 		explorer = { enabled = false },
 		input = { enabled = true },
+		image = { enabled = true },
 		lazygit = {
 			enabled = true,
 			configure = false,
@@ -78,8 +79,16 @@ return {
 			desc = "[Snacks] Toggle terminal",
 			mode = { "n", "t" },
 		},
+		-- 方案 A：普通 buffer 里看图片（光标在文件名上）
+		{
+			"<leader>pi",
+			function()
+				require("snacks").image.hover()
+			end,
+			desc = "Image: show under cursor",
+		},
 	},
-	config = function()
+	config = function(_, opts)
 		require("snacks").setup(opts)
 		vim.g.snacks_animate = false
 	end,
