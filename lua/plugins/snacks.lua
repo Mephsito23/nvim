@@ -72,7 +72,7 @@ return {
 			desc = "[Snacks] Lazygit",
 		},
 		{
-			"<A-i>",
+			"<leader>ai",
 			function()
 				require("snacks").terminal()
 			end,
