@@ -49,3 +49,12 @@ vim.keymap.set("n", "<A-d>", "<cmd>silent cc | silent cn<cr>zz", { desc = "Jump 
 vim.keymap.set("n", "<A-s>", "<cmd>silent cc | silent cp<cr>zz", { desc = "Jump to previous issue" })
 
 vim.keymap.set("n", "<C-s>", ":w<CR>", { desc = "保存文件" })
+
+-- 退出插入模式的时候切换输入法
+-- macism 安装：
+-- brew tap laishulu/homebrew
+-- brew install macism
+local function ime_off()
+	vim.fn.system("macism com.apple.keylayout.ABC")
+end
+vim.api.nvim_create_autocmd("InsertLeave", { callback = ime_off })
