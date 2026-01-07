@@ -58,3 +58,8 @@ local function ime_off()
 	vim.fn.system("macism com.apple.keylayout.ABC")
 end
 vim.api.nvim_create_autocmd("InsertLeave", { callback = ime_off })
+
+vim.keymap.set("n", "<Esc>", function()
+	ime_off()
+	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
+end, { noremap = true, silent = true })

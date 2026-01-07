@@ -66,6 +66,7 @@ return {
         vim.keymap.set("n", "<leader>xr", "<cmd>XcodebuildBuildRun<cr>", { desc = "Build & Run Project" })
         vim.keymap.set("n", "<leader>xc", "<cmd>XcodebuildCancel<cr>", { desc = "Cancel currently running action" })
         vim.keymap.set("n", "<leader>xC", "<cmd>XcodebuildCleanBuild<cr>", { desc = "Build project (clean build)" })
+        vim.keymap.set("n", "<leader>xv", "<cmd>XcodebuildPreviewGenerateAndShow<cr>", { desc = "预览视图" })
 
         vim.keymap.set("n", "<leader>xt", "<cmd>XcodebuildTest<cr>", { desc = "Run Tests" })
         vim.keymap.set("v", "<leader>xt", "<cmd>XcodebuildTestSelected<cr>", { desc = "Run Selected Tests" })
