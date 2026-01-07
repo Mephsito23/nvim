@@ -41,6 +41,7 @@ vim.o.cmdheight = 1
 -- 自动加载外部修改
 vim.o.autoread = true
 vim.bo.autoread = true
+vim.opt.autoread = true
 -- 禁止折行
 vim.wo.wrap = false
 -- 光标在行首尾时<Left><Right>可以跳到下一行

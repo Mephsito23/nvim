@@ -55,6 +55,19 @@ vim.keymap.set("n", "<C-s>", ":w<CR>", { desc = "保存文件" })
 -- brew tap laishulu/homebrew
 -- brew install macism
 local function ime_off()
-	vim.fn.system("macism com.apple.keylayout.ABC")
+	if vim.fn.has("macunix") == 1 then -- macOS
+		vim.fn.system("macism com.apple.keylayout.ABC")
+	elseif vim.fn.has("unix") == 1 then -- Linux
+		-- 只检测 fcitx5 是否运行，防止没装 fcitx5 的机器报错
+		if vim.fn.system("pgrep -x fcitx5"):len() > 0 then
+			vim.fn.system("fcitx5-remote -c")
+		end
+	end
 end
+
 vim.api.nvim_create_autocmd("InsertLeave", { callback = ime_off })
+
+vim.keymap.set("n", "<Esc>", function()
+	ime_off()
+	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
+end, { noremap = true, silent = true })
