@@ -42,6 +42,21 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			desc = "vim.diagnostic.open_float",
 		})
 
+		-- 放到你的 on_attach 里
+		vim.keymap.set("n", "<leader>ey", function()
+			local line_diagnostics = vim.diagnostic.get(bufnr, { lnum = vim.fn.line(".") - 1 })
+			if #line_diagnostics == 0 then
+				vim.notify("当前行无诊断", vim.log.levels.INFO)
+				return
+			end
+			local msg = {}
+			for _, d in ipairs(line_diagnostics) do
+				table.insert(msg, string.format("%s: %s", vim.diagnostic.severity[d.severity], d.message))
+			end
+			vim.fn.setreg("+", table.concat(msg, "\n")) -- 写进系统剪贴板
+			vim.notify("已复制诊断到系统剪贴板", vim.log.levels.INFO)
+		end, { buffer = bufnr, desc = "copy current line diagnostics to clipboard" })
+
 		keymap.set("n", "<leader>l", function()
 			local ft = vim.bo.filetype
 
