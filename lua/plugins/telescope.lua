@@ -7,7 +7,10 @@ end
 return {
 	"nvim-telescope/telescope.nvim",
 	tag = "v0.2.0",
-	dependencies = { "nvim-lua/plenary.nvim", { "nvim-telescope/telescope-fzf-native.nvim", build = "make" } },
+	dependencies = {
+		"nvim-lua/plenary.nvim",
+		{ "nvim-telescope/telescope-fzf-native.nvim", build = vim.fn.has("win32") == 1 and nil or "make" },
+	},
 	opts = {
 		defaults = {
 			file_ignore_patterns = {
@@ -44,7 +47,7 @@ return {
 	config = function(_, opts)
 		local ts = require("telescope")
 		ts.setup(opts)
-		ts.load_extension("fzf")
+		pcall(ts.load_extension, "fzf")
 
 		local builtin = require("telescope.builtin")
 		vim.keymap.set("n", "<C-p>", builtin.find_files, m)
