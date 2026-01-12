@@ -12,7 +12,7 @@ vim.keymap.set("v", "<", "<gv", opt)
 vim.keymap.set("v", ">", ">gv", opt)
 
 -- nvim-tree alt + m 键打开关闭tree
-vim.keymap.set("n", "<leader>m", ":NvimTreeToggle<CR>", opt)
+vim.keymap.set("n", "<leader>n", ":NvimTreeToggle<CR>", opt)
 vim.keymap.set("n", "<leader>J", ":NvimTreeFindFile<CR>", opt)
 
 -- BufferLine快捷键设置
@@ -38,7 +38,7 @@ vim.keymap.set("x", "d", '"_d', opt)
 vim.keymap.set("v", "c", '"_c', opt)
 vim.keymap.set("x", "c", '"_c', opt)
 
-vim.keymap.set("n", "<leader>n", ":lua require('dapui').toggle()<CR>", opt)
+vim.keymap.set("n", "<leader>m", ":lua require('dapui').toggle()<CR>", opt)
 
 -- gitsigns 相关
 vim.keymap.set("n", "<leader>gr", ":Gitsigns reset_hunk<CR>", opt)
