@@ -79,6 +79,7 @@ return {
 		})
 
 		vim.api.nvim_create_autocmd("BufWinEnter", {
+			group = group,
 			pattern = "DAP Console",
 			callback = function(ev) -- ev 才是事件表
 				vim.bo[ev.buf].syntax = "log" -- 只挂语法，不动 filetype
@@ -87,7 +88,21 @@ return {
 
 		dap.listeners.after.event_initialized["dapui_config"] = function()
 			dapui.open()
+
+			-- 手动设置日志换行
+			vim.defer_fn(function()
+				for _, win in ipairs(vim.api.nvim_list_wins()) do
+					if vim.api.nvim_win_is_valid(win) then
+						local buf = vim.api.nvim_win_get_buf(win)
+						if vim.bo[buf].filetype == "dapui_console" then
+							vim.wo[win].wrap = true
+							vim.wo[win].linebreak = true
+						end
+					end
+				end
+			end, 100)
 		end
+
 		dap.listeners.before.event_terminated["dapui_config"] = function()
 			dapui.close()
 		end
