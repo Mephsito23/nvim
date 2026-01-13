@@ -71,3 +71,5 @@ vim.keymap.set("n", "<Esc>", function()
 	ime_off()
 	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
 end, { noremap = true, silent = true })
+
+vim.o.clipboard = 'unnamedplus' 
