@@ -13,7 +13,7 @@ return {
 				require("grug-far").open({ transient = true })
 			end,
 			mode = { "n", "v" }, -- 支持普通模式和可视模式
-			desc = "Open Grug-far (Global Search & Replace)",
+			desc = "搜索替换 (Global Search & Replace)",
 		},
 	},
 }
