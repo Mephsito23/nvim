@@ -19,7 +19,7 @@ return {
 				"*.pyc",
 				"__pycache__",
 				"node_modules",
-				".git",
+				-- ".git",
 				".idea",
 				".vscode",
 			}, -- 其他过滤目录
