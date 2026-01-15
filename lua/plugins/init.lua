@@ -36,6 +36,7 @@ require("lazy").setup({
 	require("plugins.ui"),
 	require("plugins.snacks"),
 	require("plugins.grug-far"),
+	require("plugins.oil"),
 	{
 		"mason-org/mason.nvim",
 		opts = {},

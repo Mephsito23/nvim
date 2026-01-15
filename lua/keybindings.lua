@@ -14,6 +14,9 @@ vim.keymap.set("v", ">", ">gv", opt)
 -- nvim-tree alt + m 键打开关闭tree
 vim.keymap.set("n", "<leader>n", ":NvimTreeToggle<CR>", opt)
 vim.keymap.set("n", "<leader>J", ":NvimTreeFindFile<CR>", opt)
+vim.keymap.set("n", "<leader>O", function()
+	require("oil").open()
+end, { desc = "Oil 批量操作" })
 
 -- BufferLine快捷键设置
 vim.keymap.set("n", "<C-h>", ":BufferLineCyclePrev<CR>", opt)
@@ -72,4 +75,4 @@ vim.keymap.set("n", "<Esc>", function()
 	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
 end, { noremap = true, silent = true })
 
-vim.o.clipboard = 'unnamedplus' 
+vim.o.clipboard = "unnamedplus"
