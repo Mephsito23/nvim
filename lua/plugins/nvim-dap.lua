@@ -30,11 +30,18 @@ local function setupListeners()
 end
 
 return {
-	"mfussenegger/nvim-dap",
-	-- dependencies = {
-	-- 	"wojciech-kulik/xcodebuild.nvim",
-	-- },
-	config = function()
-		setupListeners()
-	end,
+	{
+		"mfussenegger/nvim-dap",
+		-- dependencies = {
+		-- 	"wojciech-kulik/xcodebuild.nvim",
+		-- },
+		config = function()
+			setupListeners()
+		end,
+	},
+	{
+		"mrcjkb/rustaceanvim",
+		version = "^6", -- Recommended
+		lazy = false, -- This plugin is already lazy
+	},
 }
