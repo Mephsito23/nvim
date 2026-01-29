@@ -39,6 +39,13 @@ return {
 	},
 	{
 		"nvim-treesitter/nvim-treesitter-context",
+		opts = {
+			enable = true,
+			max_lines = 1,
+			multiline_threshold = 3, -- 单行的上下文也忽略
+			mode = "cursor", -- 用光标行计算，减少抖动
+			separator = nil,
+		},
 		config = function(_, opts)
 			local tscontext = require("treesitter-context")
 			tscontext.setup(opts)
