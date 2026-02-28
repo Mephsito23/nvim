@@ -9,6 +9,8 @@ function M.setupLspConfig()
 		swift = "sourcekit",
 		["objective-c"] = "sourcekit",
 		["objective-cpp"] = "sourcekit",
+		cpp = "clangd",
+		c = "clangd",
 		-- 其余略
 	}
 
@@ -21,7 +23,7 @@ function M.setupLspConfig()
 	for ft, server in pairs(server_map) do
 		vim.api.nvim_create_autocmd("FileType", {
 			pattern = ft,
-			once = false, -- 允许重复进入
+			once = true, -- 允许重复进入
 			callback = function()
 				vim.lsp.enable(server) -- 已启动就忽略，未启动就拉起
 			end,
