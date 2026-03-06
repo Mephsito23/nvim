@@ -6,7 +6,7 @@ import Combine
 import SnapKit
 import UIKit
 
-class ___VARIABLE_productName___Controller: CoordinatedViewController<___VARIABLE_productName___ViewModel> {
+class ___VARIABLE_productName___Controller: BaseViewController<___VARIABLE_productName___ViewModel> {
     private var cancellables = Set<AnyCancellable>()
     // let viewModel: ___VARIABLE_productName___ViewModel = .init()
 
@@ -52,7 +52,9 @@ class ___VARIABLE_productName___Coordinator: Coordinator {
     let controller: ___VARIABLE_productName___Controller
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
-    var rootViewController: UIViewController { controller }
+    var rootViewController: UIViewController {
+        controller
+    }
 
     init(navigationController: UINavigationController) {
         controller = .init(viewModel: .init())
