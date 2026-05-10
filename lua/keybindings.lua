@@ -30,7 +30,10 @@ vim.keymap.set("n", "<leader>bx", function()
 end, { desc = "关闭buf" })
 
 --注释
-vim.keymap.set("n", "<leader>/", '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>', opt)
+-- vim.keymap.set("n", "<leader>/", '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>', opt)
+vim.keymap.set("n", "<leader>/", function()
+	require("Comment.api").toggle.linewise.current()
+end, opt)
 vim.keymap.set("v", "<leader>/", '<ESC><cmd>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>', opt)
 
 -- 使用黑洞寄存器，不替换剪贴版内容

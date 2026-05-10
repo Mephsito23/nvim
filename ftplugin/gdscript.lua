@@ -32,3 +32,5 @@ if is_godot_project then
 	})
 	vim.lsp.enable("gdscript") -- 显式启用
 end
+
+vim.bo.commentstring = "# %s"
