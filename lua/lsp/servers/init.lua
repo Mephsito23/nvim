@@ -11,6 +11,7 @@ function M.setupLspConfig()
 		["objective-cpp"] = "sourcekit",
 		cpp = "clangd",
 		c = "clangd",
+		go = "gopls",
 		-- 其余略
 	}
 
