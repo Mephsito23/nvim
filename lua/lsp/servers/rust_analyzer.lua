@@ -52,6 +52,12 @@ local function is_library(fname)
 	end
 end
 
+local function fallback_root(fname)
+	return vim.fs.root(fname, { "Cargo.toml" })
+		or vim.fs.root(fname, { "rust-project.json" })
+		or vim.fs.root(fname, { ".git" })
+end
+
 ---@type vim.lsp.Config
 return {
 	cmd = { "rust-analyzer" },
@@ -65,13 +71,14 @@ return {
 		end
 
 		local cargo_crate_dir = vim.fs.root(fname, { "Cargo.toml" })
-		local cargo_workspace_root
 
 		if cargo_crate_dir == nil then
-			on_dir(
-				vim.fs.root(fname, { "rust-project.json" })
-					or vim.fs.dirname(vim.fs.find(".git", { path = fname, upward = true })[1])
-			)
+			on_dir(fallback_root(fname))
+			return
+		end
+
+		if vim.fn.executable("cargo") ~= 1 then
+			on_dir(cargo_crate_dir)
 			return
 		end
 
@@ -88,19 +95,28 @@ return {
 		vim.system(cmd, { text = true }, function(output)
 			if output.code == 0 then
 				if output.stdout then
-					local result = vim.json.decode(output.stdout)
-					if result["workspace_root"] then
+					local ok, result = pcall(vim.json.decode, output.stdout)
+					if ok and result["workspace_root"] then
+						local cargo_workspace_root
 						cargo_workspace_root = vim.fs.normalize(result["workspace_root"])
+						on_dir(cargo_workspace_root)
+						return
 					end
 				end
 
-				on_dir(cargo_workspace_root or cargo_crate_dir)
+				on_dir(cargo_crate_dir)
 			else
 				vim.schedule(function()
 					vim.notify(
-						("[rust_analyzer] cmd failed with code %d: %s\n%s"):format(output.code, cmd, output.stderr)
+						("[rust_analyzer] cmd failed with code %d: %s\n%s"):format(
+							output.code,
+							vim.inspect(cmd),
+							output.stderr
+						),
+						vim.log.levels.WARN
 					)
 				end)
+				on_dir(cargo_crate_dir)
 			end
 		end)
 	end,

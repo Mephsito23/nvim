@@ -3,7 +3,7 @@ local M = {}
 --设置LSP 服务器
 function M.setupLspConfig()
 	local server_map = {
-		rust = "rust_analyzer",
+		-- Rust is owned by rustaceanvim to avoid starting two rust-analyzer clients.
 		lua = "lua_ls",
 		python = "ty", -- ← 这里改
 		swift = "sourcekit",
@@ -31,17 +31,14 @@ function M.setupLspConfig()
 		})
 	end
 
-	-- local rust_cfg = require("lsp.servers.rust_analyzer")
 	-- local lua_cfg = require("lsp.servers.lua_ls")
 	-- local ty_cfg = require("lsp.servers.ty")
 	-- local sourcekit_cfg = require("lsp.servers.sourcekit")
 	--
-	-- vim.lsp.config("rust_analyzer", rust_cfg)
 	-- vim.lsp.config("lua_ls", lua_cfg)
 	-- vim.lsp.config("ty", ty_cfg)
 	-- vim.lsp.config("sourcekit", sourcekit_cfg)
 	--
-	-- vim.lsp.enable({ name = "rust_analyzer", ft = { "rust" } })
 	-- vim.lsp.enable({ name = "lua_ls", ft = { "lua" } })
 	-- vim.lsp.enable({ name = "ty", ft = { "python" } })
 	-- vim.lsp.enable({ name = "sourcekit", ft = { "swift", "objective-c", "objective-cpp" } })

@@ -10,9 +10,11 @@ return {
 				-- gdscript = { "gdformat", lsp_format = "fallback" },
 			},
 			formatters = {
-				swift = {
-					args = { "--config", ".swiftformat" },
-					stop_after_first = true, -- 关键：只要第一个成功就停
+				swiftformat = {
+					append_args = function(_, ctx)
+						local config = vim.fs.find(".swiftformat", { path = ctx.dirname, upward = true })[1]
+						return config and { "--config", config } or {}
+					end,
 				},
 			},
 			format_on_save = function(bufnr)
