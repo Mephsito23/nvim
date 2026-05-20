@@ -56,6 +56,10 @@ local function setupXcodeBuild()
 		xcodebuild.terminate_session()
 		require("dap").listeners.after["event_terminated"]["me"]()
 	end, { desc = "Terminate debugger" })
+
+	vim.keymap.set("n", "<leader>xdc", function()
+		require("xcodebuild.integrations.dap").clear_console()
+	end, { desc = "Clear DAP Console" })
 end
 
 function M.generate()
