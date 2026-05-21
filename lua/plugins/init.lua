@@ -39,6 +39,7 @@ require("lazy").setup({
 	require("plugins.grug-far"),
 	require("plugins.oil"),
 	require("plugins.flash"),
+	require("plugins.render-markdown"),
 	{
 		"mason-org/mason.nvim",
 		opts = {},
