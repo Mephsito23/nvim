@@ -50,16 +50,16 @@ local function setupXcodeBuild()
     vim.keymap.set("n", "<leader>dT", xcodebuild.debug_class_tests, { desc = "Debug Class Tests" })
     vim.keymap.set("n", "<leader>b", xcodebuild.toggle_breakpoint, { desc = "Toggle Breakpoint" })
     vim.keymap.set("n", "<leader>B", xcodebuild.toggle_message_breakpoint, { desc = "Toggle Message Breakpoint" })
+    vim.keymap.set("n", "<leader>c", function()
+        require("xcodebuild.integrations.dap").clear_console()
+    end, { desc = "Clear DAP Console" })
+
 	--stylua: ignore end
 
 	vim.keymap.set("n", "<leader>dx", function()
 		xcodebuild.terminate_session()
 		require("dap").listeners.after["event_terminated"]["me"]()
 	end, { desc = "Terminate debugger" })
-
-	vim.keymap.set("n", "<leader>xdc", function()
-		require("xcodebuild.integrations.dap").clear_console()
-	end, { desc = "Clear DAP Console" })
 end
 
 function M.generate()
