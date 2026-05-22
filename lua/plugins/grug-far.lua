@@ -8,6 +8,30 @@ return {
 	end,
 	keys = {
 		{
+			"<leader>sf",
+			function()
+				local grug_far = require("grug-far")
+				local inst = grug_far.open({
+					transient = true,
+					prefills = {
+						paths = ".",
+						filesFilter = table.concat({
+							"!Packages/**",
+							"!node_modules/**",
+							"!build/**",
+							"!dist/**",
+						}, "\n"),
+					},
+				})
+
+				inst:when_ready(function()
+					inst:goto_input("search")
+				end)
+			end,
+			mode = { "n", "v" },
+			desc = "范围搜索",
+		},
+		{
 			"<leader>rp",
 			function()
 				require("grug-far").open({ transient = true })

@@ -13,6 +13,11 @@ return {
 	},
 	opts = {
 		defaults = {
+			path_display = {
+				filename_first = {
+					reverse_directories = false,
+				},
+			},
 			file_ignore_patterns = {
 				".*/Packages/.*",
 				".*/node_modules/.*",
@@ -50,8 +55,30 @@ return {
 		pcall(ts.load_extension, "fzf")
 
 		local builtin = require("telescope.builtin")
+		local function live_grep_with_preview()
+			builtin.live_grep({
+				layout_strategy = "horizontal",
+				layout_config = {
+					width = 0.95,
+					height = 0.9,
+					preview_cutoff = 1,
+					horizontal = {
+						preview_width = 0.55,
+						prompt_position = "top",
+					},
+				},
+				sorting_strategy = "ascending",
+				path_display = {
+					filename_first = {
+						reverse_directories = false,
+					},
+				},
+				previewer = true,
+			})
+		end
+
 		vim.keymap.set("n", "<C-p>", builtin.find_files, m)
-		vim.keymap.set("n", "<C-f>", builtin.live_grep, m)
+		vim.keymap.set("n", "<C-f>", live_grep_with_preview, m)
 		vim.keymap.set("n", "<leader>fb", builtin.buffers, with_desc("列出缓冲区"))
 		vim.keymap.set("n", "<leader>fh", builtin.help_tags, with_desc("帮助标签"))
 		vim.keymap.set("n", "<leader>fs", builtin.resume, with_desc("继续上次搜索"))
