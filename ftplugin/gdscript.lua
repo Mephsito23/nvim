@@ -33,4 +33,6 @@ if is_godot_project then
 	vim.lsp.enable("gdscript") -- 显式启用
 end
 
+pcall(vim.treesitter.start)
+vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 vim.bo.commentstring = "# %s"
