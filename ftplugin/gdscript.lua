@@ -26,7 +26,7 @@ end
 -- 只需要在启动前注册一次，不需要 require 'lspconfig'
 if is_godot_project then
 	vim.lsp.config("gdscript", {
-		cmd = { "nc", "localhost", "6005" }, -- Godot 的默认端口
+		cmd = { "nc", "localhost", "6008" }, -- Godot 的默认端口
 		filetypes = { "gd", "gdscript" },
 		root_dir = vim.uv.cwd(), -- 或自定义 root_dir 函数
 	})
