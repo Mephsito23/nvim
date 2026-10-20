@@ -1,6 +1,7 @@
 return {
 	"kyazdani42/nvim-tree.lua",
-	event = "VimEnter",
+	-- 在首次 BufEnter 前加载，确保启动时能接管目录。
+	lazy = false,
 	dependencies = "nvim-tree/nvim-web-devicons",
 	opts = {
 		sort_by = "case_sensitive",
